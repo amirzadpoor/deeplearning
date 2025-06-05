@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
-#include "../src/core/tensor.h"
-#include "../src/layers/layer.h"
-#include "../src/models/model.h"
+#include "tensor.h"
+#include "layer.h"
+#include "model.h"
 
 TEST(TensorTest, Addition) {
     Tensor a({2, 2});

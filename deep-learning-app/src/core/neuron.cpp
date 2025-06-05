@@ -12,7 +12,7 @@ float Neuron::forward(const Tensor& input) {
     for (int i = 0; i < weights.size(); ++i) {
         sum += weights[i] * input({i});
     }
-    return sum + bias; // No activation for simplicity
+    return sum + bias;
 }
 
 void Neuron::setWeights(const std::vector<float>& w) {

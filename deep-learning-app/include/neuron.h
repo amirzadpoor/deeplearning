@@ -1,6 +1,6 @@
 #pragma once
-#include "tensor.h"
 #include <vector>
+#include "tensor.h"
 
 class Neuron {
 public:

@@ -1,12 +1,11 @@
-#ifndef LAYER_H
-#define LAYER_H
+#pragma once
+#include "tensor.h"
 
 class Layer {
 public:
-    virtual ~Layer() {}
+    Layer() = default;
+    virtual ~Layer() = default;
 
-    virtual void forward() = 0;
-    virtual void backward() = 0;
+    virtual void forward(const Tensor& input);
+    virtual Tensor backward(const Tensor& gradient);
 };
-
-#endif // LAYER_H

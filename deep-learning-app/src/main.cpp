@@ -1,6 +1,6 @@
 #include <iostream>
-#include "core/tensor.h"
-#include "core/neuron.h"
+#include "tensor.h"
+#include "neuron.h"
 
 int main() {
     std::cout << "Initializing Deep Learning Application..." << std::endl;

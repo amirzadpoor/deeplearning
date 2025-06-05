@@ -92,6 +92,7 @@ DeepLearningAppTests_EXTERNAL_OBJECTS =
 
 DeepLearningAppTests: CMakeFiles/DeepLearningAppTests.dir/tests/test_main.cpp.o
 DeepLearningAppTests: CMakeFiles/DeepLearningAppTests.dir/build.make
+DeepLearningAppTests: /opt/homebrew/lib/libgtest.a
 DeepLearningAppTests: CMakeFiles/DeepLearningAppTests.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable DeepLearningAppTests"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/DeepLearningAppTests.dir/link.txt --verbose=$(VERBOSE)
