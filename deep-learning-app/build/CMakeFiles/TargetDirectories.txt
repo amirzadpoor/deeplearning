@@ -1,0 +1,5 @@
+/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles/deep_learning_app.dir
+/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles/DeepLearningAppTests.dir
+/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles/test.dir
+/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles/edit_cache.dir
+/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles/rebuild_cache.dir
