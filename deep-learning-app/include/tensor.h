@@ -18,6 +18,12 @@ public:
     const float& operator()(const std::vector<int>& indices) const;
     std::vector<int> getDimensions() const;
 
+    // Batch support
+    // Returns a 1D Tensor representing the i-th row of a 2D tensor
+    Tensor getRow(int i) const;
+    // Construct a Tensor from flat data and shape
+    Tensor(const std::vector<float>& flat_data, const std::vector<int>& shape);
+
     void fill(float value);
     float get(int i, int j) const;
     std::vector<int> shape() const;

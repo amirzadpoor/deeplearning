@@ -93,3 +93,17 @@ float Tensor::get(int i, int j) const {
 std::vector<int> Tensor::shape() const {
     return dimensions;
 }
+
+Tensor::Tensor(const std::vector<float>& flat_data, const std::vector<int>& shape)
+    : dimensions(shape), data(flat_data) {}
+
+Tensor Tensor::getRow(int i) const {
+    // Only for 2D tensors
+    if (dimensions.size() != 2) throw std::invalid_argument("getRow only supports 2D tensors");
+    int cols = dimensions[1];
+    std::vector<float> row_data(cols);
+    for (int j = 0; j < cols; ++j) {
+        row_data[j] = data[i * cols + j];
+    }
+    return Tensor(row_data, {cols});
+}

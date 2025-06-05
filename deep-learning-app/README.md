@@ -48,6 +48,34 @@ This project is a deep learning framework implemented in C++. The goal is to pro
   - **Model**: Basic training interface is tested for integration.
 - All tests pass, ensuring the correctness of the core components and the new hybrid activation design.
 
+## Activation Function Design: Per-Neuron vs. Per-Layer
+
+This framework supports a **hybrid approach** to activation functions, giving you both flexibility and modularity:
+
+- **Per-neuron activation:**
+  - Each neuron in a dense layer can have its own activation function.
+  - Useful for research and experimentation with heterogeneous layers.
+  - Example: `DenseLayer(3, 4, std::vector<std::function<float(float)>>{activations::ReLU, activations::Sigmoid, activations::Tanh})`
+
+- **Per-layer activation (ActivationLayer):**
+  - All neurons in a layer use the same activation function, applied as a separate layer.
+  - Matches the design of most modern frameworks (PyTorch, TensorFlow, Keras).
+  - More modular and efficient for standard use cases.
+  - Example: `model.addLayer(new DenseLayer(...)); model.addLayer(new ActivationLayer(activations::ReLU));`
+
+### Summary Table
+
+| Approach                | Per-neuron flexibility | Standard/Modular | Performance |
+|-------------------------|-----------------------|------------------|-------------|
+| Neuron-level activation | Yes                   | No               | Lower       |
+| Activation layer        | No (per layer only)   | Yes              | Higher      |
+| Hybrid (this framework) | Yes                   | Yes              | Medium      |
+
+### Recommendation
+- For most users and production models, use per-layer activation (ActivationLayer) for clarity and performance.
+- For research or custom architectures, use per-neuron activation in DenseLayer.
+- You can mix and match both approaches as needed in your model definitions.
+
 ## Getting Started
 
 ### Prerequisites

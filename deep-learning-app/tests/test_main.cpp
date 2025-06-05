@@ -28,7 +28,7 @@ TEST(TensorTest, Multiplication) {
 }
 
 TEST(LayerTest, ForwardBackward) {
-    Layer layer(2, 2, ReLU);
+    DenseLayer layer(2, 2, ReLU);
     Tensor input({2});
     input({0}) = 1.0f;
     input({1}) = 2.0f;
@@ -46,7 +46,7 @@ TEST(LayerTest, ForwardBackward) {
 
 TEST(ModelTest, Train) {
     Model model;
-    model.addLayer(new Layer(2, 2, ReLU));
+    model.addLayer(new DenseLayer(2, 2, ReLU));
     Tensor data({2, 2});
     data.fill(1.0);
     Tensor labels({2, 1});
@@ -72,7 +72,7 @@ TEST(NeuronTest, ForwardCalculation) {
 }
 
 TEST(LayerTest, SingleActivationFunction) {
-    Layer layer(2, 3, ReLU);
+    DenseLayer layer(2, 3, ReLU);
     Tensor input({3});
     input({0}) = -1.0f;
     input({1}) = 2.0f;
@@ -85,7 +85,7 @@ TEST(LayerTest, SingleActivationFunction) {
 
 TEST(LayerTest, PerNeuronActivationFunctions) {
     std::vector<std::function<float(float)>> activations = {Identity, ReLU, Sigmoid};
-    Layer layer(3, 3, activations);
+    DenseLayer layer(3, 3, activations);
     Tensor input({3});
     input({0}) = 1.0f;
     input({1}) = -2.0f;
@@ -100,7 +100,7 @@ TEST(LayerTest, PerNeuronActivationFunctions) {
 TEST(LayerTest, OutputMatchesGroundTruth) {
     // Two neurons, three inputs each, different activations
     std::vector<std::function<float(float)>> activations = {ReLU, Sigmoid};
-    Layer layer(2, 3, activations);
+    DenseLayer layer(2, 3, activations);
     // Set weights and bias for each neuron
     layer.neurons[0].setWeights({1.0f, 2.0f, 3.0f});
     layer.neurons[0].setBias(1.0f);
@@ -164,6 +164,34 @@ TEST(ActivationsTest, SoftmaxGroundTruth) {
     EXPECT_NEAR(result[0], std::exp(1.0f) / sum, 1e-5);
     EXPECT_NEAR(result[1], std::exp(2.0f) / sum, 1e-5);
     EXPECT_NEAR(result[2], std::exp(3.0f) / sum, 1e-5);
+}
+
+TEST(LayerTest, BatchForwardGroundTruth) {
+    using namespace activations;
+    // 2 samples, 3 inputs each, 2 neurons
+    DenseLayer layer(2, 3, std::vector<std::function<float(float)>>{ReLU, Sigmoid});
+    layer.neurons[0].setWeights({1.0f, 2.0f, 3.0f});
+    layer.neurons[0].setBias(1.0f);
+    layer.neurons[1].setWeights({-1.0f, 0.0f, 1.0f});
+    layer.neurons[1].setBias(0.0f);
+    // Batch input: 2 samples
+    std::vector<float> flat_data = {
+        1.0f, 2.0f, 3.0f, // sample 0
+        0.0f, 1.0f, 0.0f  // sample 1
+    };
+    Tensor input(flat_data, {2, 3});
+    Tensor output = layer.forward(input);
+    // Output should be shape [2, 2]
+    EXPECT_EQ(output.shape()[0], 2);
+    EXPECT_EQ(output.shape()[1], 2);
+    // Sample 0, neuron 0: z = 1+4+9+1=15, ReLU(15)=15
+    // Sample 0, neuron 1: z = -1+0+3=2, Sigmoid(2)=0.880797
+    // Sample 1, neuron 0: z = 0+2+0+1=3, ReLU(3)=3
+    // Sample 1, neuron 1: z = 0+0+0=0, Sigmoid(0)=0.5
+    EXPECT_FLOAT_EQ(output({0, 0}), 15.0f);
+    EXPECT_NEAR(output({0, 1}), 0.880797f, 1e-5);
+    EXPECT_FLOAT_EQ(output({1, 0}), 3.0f);
+    EXPECT_FLOAT_EQ(output({1, 1}), 0.5f);
 }
 
 int main(int argc, char **argv) {
