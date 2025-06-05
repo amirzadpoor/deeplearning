@@ -23,7 +23,12 @@ find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
 file(GLOB TEST_SOURCES tests/test_main.cpp)
-add_executable(DeepLearningAppTests ${TEST_SOURCES})
+add_executable(DeepLearningAppTests ${TEST_SOURCES}
+    src/core/tensor.cpp
+    src/core/neuron.cpp
+    src/layers/layer.cpp
+    src/models/model.cpp
+)
 
 target_link_libraries(DeepLearningAppTests ${GTEST_LIBRARIES} pthread)
 

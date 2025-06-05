@@ -11,8 +11,18 @@ Tensor::Tensor(const std::vector<int>& dimensions) : dimensions(dimensions) {
     data.resize(totalSize);
 }
 
+Tensor::Tensor(const Tensor& other) : dimensions(other.dimensions), data(other.data) {}
+
 Tensor::~Tensor() {
     // Destructor logic if needed
+}
+
+Tensor& Tensor::operator=(const Tensor& other) {
+    if (this != &other) {
+        dimensions = other.dimensions;
+        data = other.data;
+    }
+    return *this;
 }
 
 std::vector<int> Tensor::getDimensions() const {
@@ -68,4 +78,18 @@ Tensor Tensor::reshape(const std::vector<int>& newDimensions) {
     // Logic for reshaping the tensor
     // This is a placeholder for future implementation
     return Tensor(newDimensions);
+}
+
+void Tensor::fill(float value) {
+    std::fill(data.begin(), data.end(), value);
+}
+
+float Tensor::get(int i, int j) const {
+    if (dimensions.size() != 2) throw std::invalid_argument("get(i, j) only supports 2D tensors");
+    int index = i * dimensions[1] + j;
+    return data[index];
+}
+
+std::vector<int> Tensor::shape() const {
+    return dimensions;
 }

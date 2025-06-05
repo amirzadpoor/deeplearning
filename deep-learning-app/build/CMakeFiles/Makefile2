@@ -83,7 +83,7 @@ clean: CMakeFiles/DeepLearningAppTests.dir/clean
 CMakeFiles/deep_learning_app.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/deep_learning_app.dir/build.make CMakeFiles/deep_learning_app.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/deep_learning_app.dir/build.make CMakeFiles/deep_learning_app.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles --progress-num=3,4,5,6,7,8 "Built target deep_learning_app"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles --progress-num=7,8,9,10,11,12 "Built target deep_learning_app"
 .PHONY : CMakeFiles/deep_learning_app.dir/all
 
 # Build rule for subdir invocation for target.
@@ -109,12 +109,12 @@ CMakeFiles/deep_learning_app.dir/clean:
 CMakeFiles/DeepLearningAppTests.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DeepLearningAppTests.dir/build.make CMakeFiles/DeepLearningAppTests.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DeepLearningAppTests.dir/build.make CMakeFiles/DeepLearningAppTests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles --progress-num=1,2 "Built target DeepLearningAppTests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target DeepLearningAppTests"
 .PHONY : CMakeFiles/DeepLearningAppTests.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/DeepLearningAppTests.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/DeepLearningAppTests.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles 0
 .PHONY : CMakeFiles/DeepLearningAppTests.dir/rule

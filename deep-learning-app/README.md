@@ -28,6 +28,26 @@ This project is a deep learning framework implemented in C++. The goal is to pro
 
 - **CMakeLists.txt**: Configuration file for building the project with CMake.
 
+## Recent Developments and Features
+
+### Hybrid Activation Function Design
+- The `Layer` class now supports a hybrid activation function approach:
+  - You can specify a **single activation function** for all neurons in a layer (e.g., ReLU, sigmoid, etc.).
+  - Alternatively, you can provide a **vector of activation functions**, one for each neuron, allowing for maximum flexibility and research use cases.
+- This design makes the framework both scalable (for standard deep learning) and highly customizable (for advanced architectures).
+
+### Improved Layer and Neuron APIs
+- The `Layer` constructor now requires the number of neurons, the input size, and either a single activation function or a vector of activation functions.
+- Each `Neuron` can be configured with custom weights and bias, and computes its output as a weighted sum plus bias.
+
+### Expanded Test Coverage
+- The test suite now includes:
+  - **Tensor**: Addition and multiplication operations.
+  - **Neuron**: Output calculation with ground truth validation.
+  - **Layer**: Both single and per-neuron activation function scenarios are tested.
+  - **Model**: Basic training interface is tested for integration.
+- All tests pass, ensuring the correctness of the core components and the new hybrid activation design.
+
 ## Getting Started
 
 ### Prerequisites

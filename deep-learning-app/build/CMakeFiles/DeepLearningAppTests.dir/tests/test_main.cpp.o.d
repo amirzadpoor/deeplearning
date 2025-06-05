@@ -856,4 +856,6 @@ CMakeFiles/DeepLearningAppTests.dir/tests/test_main.cpp.o: \
   /opt/homebrew/include/gtest/gtest_prod.h \
   /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/tensor.h \
   /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/layer.h \
+  /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/neuron.h \
+  /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/activations.h \
   /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/model.h

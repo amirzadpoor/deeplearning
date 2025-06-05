@@ -2,6 +2,10 @@
 #include "tensor.h"
 #include "layer.h"
 #include "model.h"
+#include "neuron.h"
+#include "activations.h"
+
+using namespace activations;
 
 TEST(TensorTest, Addition) {
     Tensor a({2, 2});
@@ -24,29 +28,97 @@ TEST(TensorTest, Multiplication) {
 }
 
 TEST(LayerTest, ForwardBackward) {
-    Layer layer;
-    Tensor input({2, 2});
-    input.fill(1.0);
+    Layer layer(2, 2, ReLU);
+    Tensor input({2});
+    input({0}) = 1.0f;
+    input({1}) = 2.0f;
     Tensor output = layer.forward(input);
     EXPECT_EQ(output.shape()[0], 2);
-    EXPECT_EQ(output.shape()[1], 2);
+    EXPECT_FLOAT_EQ(output({0}), 0.0f);
+    EXPECT_FLOAT_EQ(output({1}), 0.0f);
     
-    Tensor grad_output({2, 2});
-    grad_output.fill(0.5);
+    Tensor grad_output({2});
+    grad_output({0}) = 0.5f;
+    grad_output({1}) = 0.5f;
     Tensor grad_input = layer.backward(grad_output);
     EXPECT_EQ(grad_input.shape()[0], 2);
-    EXPECT_EQ(grad_input.shape()[1], 2);
 }
 
 TEST(ModelTest, Train) {
     Model model;
-    model.addLayer(new Layer());
+    model.addLayer(new Layer(2, 2, ReLU));
     Tensor data({2, 2});
     data.fill(1.0);
     Tensor labels({2, 1});
     labels.fill(0.0);
     model.train(data, labels);
     EXPECT_TRUE(true); // Placeholder for actual training validation
+}
+
+TEST(NeuronTest, ForwardCalculation) {
+    Neuron neuron(3);
+    neuron.setWeights({1.0f, 2.0f, 3.0f});
+    neuron.setBias(0.5f);
+
+    Tensor input({3});
+    input.fill(0.0f);
+    input({0}) = 1.0f;
+    input({1}) = 2.0f;
+    input({2}) = 3.0f;
+
+    float output = neuron.forward(input);
+    // Ground truth: 1*1 + 2*2 + 3*3 + 0.5 = 1 + 4 + 9 + 0.5 = 14.5
+    EXPECT_FLOAT_EQ(output, 14.5f);
+}
+
+TEST(LayerTest, SingleActivationFunction) {
+    Layer layer(2, 3, ReLU);
+    Tensor input({3});
+    input({0}) = -1.0f;
+    input({1}) = 2.0f;
+    input({2}) = 3.0f;
+    Tensor output = layer.forward(input);
+    EXPECT_EQ(output.shape()[0], 2);
+    EXPECT_FLOAT_EQ(output({0}), 0.0f);
+    EXPECT_FLOAT_EQ(output({1}), 0.0f);
+}
+
+TEST(LayerTest, PerNeuronActivationFunctions) {
+    std::vector<std::function<float(float)>> activations = {Identity, ReLU, Sigmoid};
+    Layer layer(3, 3, activations);
+    Tensor input({3});
+    input({0}) = 1.0f;
+    input({1}) = -2.0f;
+    input({2}) = 0.5f;
+    Tensor output = layer.forward(input);
+    EXPECT_EQ(output.shape()[0], 3);
+    EXPECT_FLOAT_EQ(output({0}), 0.0f);
+    EXPECT_FLOAT_EQ(output({1}), 0.0f);
+    EXPECT_NEAR(output({2}), 0.5f, 1e-5);
+}
+
+TEST(LayerTest, OutputMatchesGroundTruth) {
+    // Two neurons, three inputs each, different activations
+    std::vector<std::function<float(float)>> activations = {ReLU, Sigmoid};
+    Layer layer(2, 3, activations);
+    // Set weights and bias for each neuron
+    layer.neurons[0].setWeights({1.0f, 2.0f, 3.0f});
+    layer.neurons[0].setBias(1.0f);
+    layer.neurons[1].setWeights({-1.0f, 0.0f, 1.0f});
+    layer.neurons[1].setBias(0.0f);
+
+    Tensor input({3});
+    input({0}) = 1.0f;
+    input({1}) = 2.0f;
+    input({2}) = 3.0f;
+
+    Tensor output = layer.forward(input);
+
+    // Hand-calculated:
+    // Neuron 0: z = 1*1 + 2*2 + 3*3 + 1 = 1 + 4 + 9 + 1 = 15, ReLU(15) = 15
+    // Neuron 1: z = -1*1 + 0*2 + 1*3 + 0 = -1 + 0 + 3 = 2, Sigmoid(2) ≈ 0.880797
+    EXPECT_FLOAT_EQ(output({0}), 15.0f);
+    EXPECT_NEAR(output({1}), 0.880797f, 1e-5);
 }
 
 int main(int argc, char **argv) {

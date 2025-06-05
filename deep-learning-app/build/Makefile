@@ -158,6 +158,7 @@ src/core/neuron.o: src/core/neuron.cpp.o
 # target to build an object file
 src/core/neuron.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/deep_learning_app.dir/build.make CMakeFiles/deep_learning_app.dir/src/core/neuron.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DeepLearningAppTests.dir/build.make CMakeFiles/DeepLearningAppTests.dir/src/core/neuron.cpp.o
 .PHONY : src/core/neuron.cpp.o
 
 src/core/neuron.i: src/core/neuron.cpp.i
@@ -166,6 +167,7 @@ src/core/neuron.i: src/core/neuron.cpp.i
 # target to preprocess a source file
 src/core/neuron.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/deep_learning_app.dir/build.make CMakeFiles/deep_learning_app.dir/src/core/neuron.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DeepLearningAppTests.dir/build.make CMakeFiles/DeepLearningAppTests.dir/src/core/neuron.cpp.i
 .PHONY : src/core/neuron.cpp.i
 
 src/core/neuron.s: src/core/neuron.cpp.s
@@ -174,6 +176,7 @@ src/core/neuron.s: src/core/neuron.cpp.s
 # target to generate assembly for a file
 src/core/neuron.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/deep_learning_app.dir/build.make CMakeFiles/deep_learning_app.dir/src/core/neuron.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DeepLearningAppTests.dir/build.make CMakeFiles/DeepLearningAppTests.dir/src/core/neuron.cpp.s
 .PHONY : src/core/neuron.cpp.s
 
 src/core/tensor.o: src/core/tensor.cpp.o
@@ -182,6 +185,7 @@ src/core/tensor.o: src/core/tensor.cpp.o
 # target to build an object file
 src/core/tensor.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/deep_learning_app.dir/build.make CMakeFiles/deep_learning_app.dir/src/core/tensor.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DeepLearningAppTests.dir/build.make CMakeFiles/DeepLearningAppTests.dir/src/core/tensor.cpp.o
 .PHONY : src/core/tensor.cpp.o
 
 src/core/tensor.i: src/core/tensor.cpp.i
@@ -190,6 +194,7 @@ src/core/tensor.i: src/core/tensor.cpp.i
 # target to preprocess a source file
 src/core/tensor.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/deep_learning_app.dir/build.make CMakeFiles/deep_learning_app.dir/src/core/tensor.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DeepLearningAppTests.dir/build.make CMakeFiles/DeepLearningAppTests.dir/src/core/tensor.cpp.i
 .PHONY : src/core/tensor.cpp.i
 
 src/core/tensor.s: src/core/tensor.cpp.s
@@ -198,6 +203,7 @@ src/core/tensor.s: src/core/tensor.cpp.s
 # target to generate assembly for a file
 src/core/tensor.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/deep_learning_app.dir/build.make CMakeFiles/deep_learning_app.dir/src/core/tensor.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DeepLearningAppTests.dir/build.make CMakeFiles/DeepLearningAppTests.dir/src/core/tensor.cpp.s
 .PHONY : src/core/tensor.cpp.s
 
 src/layers/layer.o: src/layers/layer.cpp.o
@@ -206,6 +212,7 @@ src/layers/layer.o: src/layers/layer.cpp.o
 # target to build an object file
 src/layers/layer.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/deep_learning_app.dir/build.make CMakeFiles/deep_learning_app.dir/src/layers/layer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DeepLearningAppTests.dir/build.make CMakeFiles/DeepLearningAppTests.dir/src/layers/layer.cpp.o
 .PHONY : src/layers/layer.cpp.o
 
 src/layers/layer.i: src/layers/layer.cpp.i
@@ -214,6 +221,7 @@ src/layers/layer.i: src/layers/layer.cpp.i
 # target to preprocess a source file
 src/layers/layer.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/deep_learning_app.dir/build.make CMakeFiles/deep_learning_app.dir/src/layers/layer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DeepLearningAppTests.dir/build.make CMakeFiles/DeepLearningAppTests.dir/src/layers/layer.cpp.i
 .PHONY : src/layers/layer.cpp.i
 
 src/layers/layer.s: src/layers/layer.cpp.s
@@ -222,6 +230,7 @@ src/layers/layer.s: src/layers/layer.cpp.s
 # target to generate assembly for a file
 src/layers/layer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/deep_learning_app.dir/build.make CMakeFiles/deep_learning_app.dir/src/layers/layer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DeepLearningAppTests.dir/build.make CMakeFiles/DeepLearningAppTests.dir/src/layers/layer.cpp.s
 .PHONY : src/layers/layer.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -254,6 +263,7 @@ src/models/model.o: src/models/model.cpp.o
 # target to build an object file
 src/models/model.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/deep_learning_app.dir/build.make CMakeFiles/deep_learning_app.dir/src/models/model.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DeepLearningAppTests.dir/build.make CMakeFiles/DeepLearningAppTests.dir/src/models/model.cpp.o
 .PHONY : src/models/model.cpp.o
 
 src/models/model.i: src/models/model.cpp.i
@@ -262,6 +272,7 @@ src/models/model.i: src/models/model.cpp.i
 # target to preprocess a source file
 src/models/model.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/deep_learning_app.dir/build.make CMakeFiles/deep_learning_app.dir/src/models/model.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DeepLearningAppTests.dir/build.make CMakeFiles/DeepLearningAppTests.dir/src/models/model.cpp.i
 .PHONY : src/models/model.cpp.i
 
 src/models/model.s: src/models/model.cpp.s
@@ -270,6 +281,7 @@ src/models/model.s: src/models/model.cpp.s
 # target to generate assembly for a file
 src/models/model.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/deep_learning_app.dir/build.make CMakeFiles/deep_learning_app.dir/src/models/model.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DeepLearningAppTests.dir/build.make CMakeFiles/DeepLearningAppTests.dir/src/models/model.cpp.s
 .PHONY : src/models/model.cpp.s
 
 tests/test_main.o: tests/test_main.cpp.o
