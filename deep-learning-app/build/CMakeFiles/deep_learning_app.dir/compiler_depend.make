@@ -2310,6 +2310,7 @@ CMakeFiles/deep_learning_app.dir/src/layers/layer.cpp.o: /Users/azadpoor/Desktop
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdint.h \
+  /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/activations.h \
   /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/layer.h \
   /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/neuron.h \
   /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/tensor.h
@@ -3872,6 +3873,7 @@ CMakeFiles/deep_learning_app.dir/src/models/model.cpp.o: /Users/azadpoor/Desktop
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdint.h \
+  /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/activations.h \
   /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/layer.h \
   /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/model.h \
   /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/neuron.h \
@@ -4453,6 +4455,8 @@ CMakeFiles/deep_learning_app.dir/src/models/model.cpp.o: /Users/azadpoor/Desktop
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include/c++/v1/__atomic/check_memory_order.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include/c++/v1/__mbstate_t.h:
+
+/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/activations.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include/c++/v1/__string/extern_template_lists.h:
 

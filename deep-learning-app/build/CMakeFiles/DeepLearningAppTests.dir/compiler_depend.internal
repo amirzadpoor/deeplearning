@@ -2336,6 +2336,7 @@ CMakeFiles/DeepLearningAppTests.dir/src/layers/layer.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdarg.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stddef.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdint.h
+ /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/activations.h
  /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/layer.h
  /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/neuron.h
  /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/tensor.h
@@ -3120,6 +3121,7 @@ CMakeFiles/DeepLearningAppTests.dir/src/models/model.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdarg.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stddef.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdint.h
+ /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/activations.h
  /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/layer.h
  /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/model.h
  /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/neuron.h
@@ -3960,6 +3962,7 @@ CMakeFiles/DeepLearningAppTests.dir/tests/test_main.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdarg.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stddef.h
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdint.h
+ /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/activations.h
  /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/layer.h
  /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/model.h
  /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/neuron.h

@@ -121,6 +121,51 @@ TEST(LayerTest, OutputMatchesGroundTruth) {
     EXPECT_NEAR(output({1}), 0.880797f, 1e-5);
 }
 
+TEST(ActivationsTest, ScalarActivationsGroundTruth) {
+    using namespace activations;
+    // ReLU
+    EXPECT_FLOAT_EQ(ReLU(3.0f), 3.0f);
+    EXPECT_FLOAT_EQ(ReLU(-2.0f), 0.0f);
+    // Leaky ReLU (default alpha=0.01)
+    EXPECT_FLOAT_EQ(LeakyReLU(3.0f), 3.0f);
+    EXPECT_FLOAT_EQ(LeakyReLU(-2.0f), -0.02f);
+    // ELU (default alpha=1.0)
+    EXPECT_FLOAT_EQ(ELU(2.0f), 2.0f);
+    EXPECT_NEAR(ELU(-1.0f), std::exp(-1.0f) - 1.0f, 1e-5);
+    // Swish
+    EXPECT_NEAR(Swish(2.0f), 2.0f * Sigmoid(2.0f), 1e-5);
+    EXPECT_NEAR(Swish(-1.0f), -1.0f * Sigmoid(-1.0f), 1e-5);
+    // Hard Sigmoid
+    EXPECT_FLOAT_EQ(HardSigmoid(2.0f), 0.9f);
+    EXPECT_FLOAT_EQ(HardSigmoid(-3.0f), 0.0f);
+    EXPECT_FLOAT_EQ(HardSigmoid(5.0f), 1.0f);
+    // Hard Tanh
+    EXPECT_FLOAT_EQ(HardTanh(2.0f), 1.0f);
+    EXPECT_FLOAT_EQ(HardTanh(-3.0f), -1.0f);
+    EXPECT_FLOAT_EQ(HardTanh(0.5f), 0.5f);
+    // GELU (approximate)
+    EXPECT_NEAR(GELU(1.0f), 0.5f * 1.0f * (1.0f + std::tanh(std::sqrt(2.0f / 3.14159265f) * (1.0f + 0.044715f * std::pow(1.0f, 3)))), 1e-5);
+    // Tanh
+    EXPECT_FLOAT_EQ(Tanh(0.0f), 0.0f);
+    EXPECT_NEAR(Tanh(1.0f), std::tanh(1.0f), 1e-5);
+    // Sigmoid
+    EXPECT_FLOAT_EQ(Sigmoid(0.0f), 0.5f);
+    EXPECT_NEAR(Sigmoid(2.0f), 1.0f / (1.0f + std::exp(-2.0f)), 1e-5);
+    // Identity
+    EXPECT_FLOAT_EQ(Identity(5.0f), 5.0f);
+    EXPECT_FLOAT_EQ(Identity(-3.0f), -3.0f);
+}
+
+TEST(ActivationsTest, SoftmaxGroundTruth) {
+    using namespace activations;
+    std::vector<float> input = {1.0f, 2.0f, 3.0f};
+    std::vector<float> result = softmax(input);
+    float sum = std::exp(1.0f) + std::exp(2.0f) + std::exp(3.0f);
+    EXPECT_NEAR(result[0], std::exp(1.0f) / sum, 1e-5);
+    EXPECT_NEAR(result[1], std::exp(2.0f) / sum, 1e-5);
+    EXPECT_NEAR(result[2], std::exp(3.0f) / sum, 1e-5);
+}
+
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

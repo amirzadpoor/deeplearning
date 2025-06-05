@@ -2333,6 +2333,7 @@ CMakeFiles/DeepLearningAppTests.dir/src/layers/layer.cpp.o: /Users/azadpoor/Desk
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdint.h \
+  /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/activations.h \
   /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/layer.h \
   /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/neuron.h \
   /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/tensor.h
@@ -3116,6 +3117,7 @@ CMakeFiles/DeepLearningAppTests.dir/src/models/model.cpp.o: /Users/azadpoor/Desk
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdint.h \
+  /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/activations.h \
   /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/layer.h \
   /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/model.h \
   /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/neuron.h \
@@ -3955,6 +3957,7 @@ CMakeFiles/DeepLearningAppTests.dir/tests/test_main.cpp.o: /Users/azadpoor/Deskt
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdint.h \
+  /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/activations.h \
   /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/layer.h \
   /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/model.h \
   /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/neuron.h \
@@ -4045,6 +4048,8 @@ CMakeFiles/DeepLearningAppTests.dir/tests/test_main.cpp.o: /Users/azadpoor/Deskt
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include/AvailabilityMacros.h:
 
 /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/model.h:
+
+/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/activations.h:
 
 /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/src/layers/layer.cpp:
 
