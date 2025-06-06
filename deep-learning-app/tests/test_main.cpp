@@ -179,7 +179,7 @@ TEST(LayerTest, BatchForwardGroundTruth) {
         1.0f, 2.0f, 3.0f, // sample 0
         0.0f, 1.0f, 0.0f  // sample 1
     };
-    Tensor input(flat_data, {2, 3});
+    Tensor input(flat_data, {2, 3}, Backend::CPU);
     Tensor output = layer.forward(input);
     // Output should be shape [2, 2]
     EXPECT_EQ(output.shape()[0], 2);

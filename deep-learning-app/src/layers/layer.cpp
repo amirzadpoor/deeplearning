@@ -28,7 +28,7 @@ Tensor DenseLayer::forward(const Tensor& input) {
             float z = neurons[i].forward(input);
             output.push_back(activations[i](z));
         }
-        Tensor out_tensor({static_cast<int>(output.size())});
+        Tensor out_tensor({static_cast<int>(output.size())}, input.getBackend());
         for (size_t i = 0; i < output.size(); ++i) {
             out_tensor({static_cast<int>(i)}) = output[i];
         }
@@ -48,7 +48,7 @@ Tensor DenseLayer::forward(const Tensor& input) {
             batch_output.insert(batch_output.end(), output.begin(), output.end());
         }
         // Output shape: [batch_size, num_neurons]
-        return Tensor(batch_output, {batch_size, static_cast<int>(neurons.size())});
+        return Tensor(batch_output, {batch_size, static_cast<int>(neurons.size())}, input.getBackend());
     } else {
         throw std::invalid_argument("DenseLayer::forward only supports 1D or 2D input tensors");
     }
@@ -69,7 +69,7 @@ Tensor ActivationLayer::forward(const Tensor& input) {
         for (int i = 0; i < input.shape()[0]; ++i) {
             out_data[i] = activation(input({i}));
         }
-        return Tensor(out_data, {input.shape()[0]});
+        return Tensor(out_data, {input.shape()[0]}, input.getBackend());
     } else if (dims.size() == 2) {
         int rows = dims[0];
         int cols = dims[1];
@@ -78,7 +78,7 @@ Tensor ActivationLayer::forward(const Tensor& input) {
                 out_data[i * cols + j] = activation(input({i, j}));
             }
         }
-        return Tensor(out_data, {rows, cols});
+        return Tensor(out_data, {rows, cols}, input.getBackend());
     } else {
         throw std::invalid_argument("ActivationLayer::forward only supports 1D or 2D input tensors");
     }

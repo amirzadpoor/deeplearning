@@ -2,11 +2,13 @@
 #define TENSOR_H
 
 #include <vector>
+#include "backend.h"
 
 class Tensor {
 public:
-    Tensor(const std::vector<int>& dimensions);
+    Tensor(const std::vector<int>& dimensions, Backend backend = Backend::CPU);
     Tensor(const Tensor& other);
+    Tensor(const std::vector<float>& flat_data, const std::vector<int>& shape, Backend backend = Backend::CPU);
     ~Tensor();
 
     Tensor& operator=(const Tensor& other);
@@ -28,9 +30,14 @@ public:
     float get(int i, int j) const;
     std::vector<int> shape() const;
 
+    // Backend support
+    Backend getBackend() const { return backend; }
+    void toBackend(Backend new_backend); // stub for now
+
 private:
     std::vector<int> dimensions;
     std::vector<float> data;
+    Backend backend;
     int calculateIndex(const std::vector<int>& indices) const;
 };
 

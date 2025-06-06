@@ -76,6 +76,32 @@ This framework supports a **hybrid approach** to activation functions, giving yo
 - For research or custom architectures, use per-neuron activation in DenseLayer.
 - You can mix and match both approaches as needed in your model definitions.
 
+## Backend Abstraction and GPU Support
+
+The framework now supports a backend abstraction for tensors and operations, enabling both CPU and (future) GPU (CUDA) execution.
+
+- **Backend selection:**
+  - The `Tensor` class and core operations can use either the CPU or CUDA backend.
+  - The backend is specified at tensor construction and can be queried or changed at runtime.
+
+- **Conditional CUDA compilation:**
+  - CUDA-specific code is only compiled and used if the `USE_CUDA` flag is defined during build.
+  - On Mac, only the CPU backend is available; on Linux with NVIDIA hardware, CUDA can be enabled.
+
+- **How to build with CUDA:**
+  - By default, the framework builds for CPU only.
+  - To enable CUDA, define `USE_CUDA` during compilation (e.g., with CMake: `-DUSE_CUDA=ON`).
+  - CUDA code is only compiled and used if the backend is set to CUDA and `USE_CUDA` is defined.
+
+- **Example: Creating a Tensor with a Specific Backend**
+  ```cpp
+  Tensor cpu_tensor({2, 2}); // Defaults to CPU
+  Tensor gpu_tensor({2, 2}, Backend::CUDA); // For CUDA (if enabled)
+  ```
+
+- **Extensibility:**
+  - The backend abstraction allows for easy addition of OpenCL or Metal support in the future for Mac GPU acceleration.
+
 ## Getting Started
 
 ### Prerequisites
