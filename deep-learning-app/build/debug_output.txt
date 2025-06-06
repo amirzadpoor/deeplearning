@@ -1,0 +1,85 @@
+[==========] Running 26 tests from 7 test suites.
+[----------] Global test environment set-up.
+[----------] 2 tests from TensorTest
+[ RUN      ] TensorTest.Addition
+[       OK ] TensorTest.Addition (0 ms)
+[ RUN      ] TensorTest.Multiplication
+[       OK ] TensorTest.Multiplication (0 ms)
+[----------] 2 tests from TensorTest (0 ms total)
+
+[----------] 5 tests from LayerTest
+[ RUN      ] LayerTest.ForwardBackward
+[       OK ] LayerTest.ForwardBackward (0 ms)
+[ RUN      ] LayerTest.SingleActivationFunction
+[       OK ] LayerTest.SingleActivationFunction (0 ms)
+[ RUN      ] LayerTest.PerNeuronActivationFunctions
+[       OK ] LayerTest.PerNeuronActivationFunctions (0 ms)
+[ RUN      ] LayerTest.OutputMatchesGroundTruth
+[       OK ] LayerTest.OutputMatchesGroundTruth (0 ms)
+[ RUN      ] LayerTest.BatchForwardGroundTruth
+[       OK ] LayerTest.BatchForwardGroundTruth (0 ms)
+[----------] 5 tests from LayerTest (0 ms total)
+
+[----------] 1 test from ModelTest
+[ RUN      ] ModelTest.Train
+[       OK ] ModelTest.Train (0 ms)
+[----------] 1 test from ModelTest (0 ms total)
+
+[----------] 13 tests from NeuronTest
+[ RUN      ] NeuronTest.ForwardCalculation
+[       OK ] NeuronTest.ForwardCalculation (0 ms)
+[ RUN      ] NeuronTest.LinearNeuronGroundTruth
+[       OK ] NeuronTest.LinearNeuronGroundTruth (0 ms)
+[ RUN      ] NeuronTest.QuadraticNeuronGroundTruth
+[       OK ] NeuronTest.QuadraticNeuronGroundTruth (0 ms)
+[ RUN      ] NeuronTest.SirenNeuronGroundTruth
+[       OK ] NeuronTest.SirenNeuronGroundTruth (0 ms)
+[ RUN      ] NeuronTest.RBFNeuronGroundTruth
+[       OK ] NeuronTest.RBFNeuronGroundTruth (0 ms)
+[ RUN      ] NeuronTest.RationalNeuronGroundTruth
+[       OK ] NeuronTest.RationalNeuronGroundTruth (0 ms)
+[ RUN      ] NeuronTest.ComplexNeuronGroundTruth
+[       OK ] NeuronTest.ComplexNeuronGroundTruth (0 ms)
+[ RUN      ] NeuronTest.LinearNeuronBackwardGroundTruth
+[       OK ] NeuronTest.LinearNeuronBackwardGroundTruth (0 ms)
+[ RUN      ] NeuronTest.QuadraticNeuronBackwardGroundTruth
+[       OK ] NeuronTest.QuadraticNeuronBackwardGroundTruth (0 ms)
+[ RUN      ] NeuronTest.SirenNeuronBackwardGroundTruth
+[       OK ] NeuronTest.SirenNeuronBackwardGroundTruth (0 ms)
+[ RUN      ] NeuronTest.RBFNeuronBackwardGroundTruth
+[       OK ] NeuronTest.RBFNeuronBackwardGroundTruth (0 ms)
+[ RUN      ] NeuronTest.RationalNeuronBackwardGroundTruth
+[       OK ] NeuronTest.RationalNeuronBackwardGroundTruth (0 ms)
+[ RUN      ] NeuronTest.ComplexNeuronBackwardGroundTruth
+[       OK ] NeuronTest.ComplexNeuronBackwardGroundTruth (0 ms)
+[----------] 13 tests from NeuronTest (0 ms total)
+
+[----------] 2 tests from ActivationsTest
+[ RUN      ] ActivationsTest.ScalarActivationsGroundTruth
+[       OK ] ActivationsTest.ScalarActivationsGroundTruth (0 ms)
+[ RUN      ] ActivationsTest.SoftmaxGroundTruth
+[       OK ] ActivationsTest.SoftmaxGroundTruth (0 ms)
+[----------] 2 tests from ActivationsTest (0 ms total)
+
+[----------] 2 tests from DenseLayerTest
+[ RUN      ] DenseLayerTest.HeterogeneousLayerGroundTruth
+[       OK ] DenseLayerTest.HeterogeneousLayerGroundTruth (0 ms)
+[ RUN      ] DenseLayerTest.HeterogeneousLayerBackwardGroundTruth
+[       OK ] DenseLayerTest.HeterogeneousLayerBackwardGroundTruth (0 ms)
+[----------] 2 tests from DenseLayerTest (0 ms total)
+
+[----------] 1 test from MultiLayerTest
+[ RUN      ] MultiLayerTest.TwoLayerForwardBackwardUpdate
+unknown file: Failure
+C++ exception with description "Number of indices does not match tensor dimensions." thrown in the test body.
+
+[  FAILED  ] MultiLayerTest.TwoLayerForwardBackwardUpdate (0 ms)
+[----------] 1 test from MultiLayerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 26 tests from 7 test suites ran. (0 ms total)
+[  PASSED  ] 25 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] MultiLayerTest.TwoLayerForwardBackwardUpdate
+
+ 1 FAILED TEST

@@ -1,146 +1,142 @@
 # Deep Learning Application
 
-This project is a deep learning framework implemented in C++. The goal is to provide a flexible and efficient library for building and training neural networks, with the potential to compete with established frameworks like PyTorch and TensorFlow.
+A flexible, extensible deep learning framework in C++ supporting advanced neuron types, heterogeneous layers, hybrid activation systems, and backend abstraction (CPU/GPU). Designed for both research and practical use.
+
+---
 
 ## Project Structure
 
-- **src/**: Contains the source code for the deep learning framework.
-  - **core/**: Implements core functionalities such as tensor operations.
-    - `tensor.cpp`: Implementation of the Tensor class.
-    - `tensor.h`: Declaration of the Tensor class.
-  - **layers/**: Implements various neural network layers.
-    - `layer.cpp`: Implementation of the Layer class.
-    - `layer.h`: Declaration of the Layer class.
-  - **models/**: Implements the Model class for managing neural networks.
-    - `model.cpp`: Implementation of the Model class.
-  - **utils/**: Contains utility functions for data handling and performance measurement.
-    - `utils.h`: Declaration of utility functions.
-  - `main.cpp`: Entry point of the application.
+- **src/**: Source code for the framework
+  - **core/**: Core components (e.g., `tensor.cpp`, `tensor.h`, `neuron.cpp`, `neuron.h`)
+  - **layers/**: Layer implementations (e.g., `layer.cpp`, `layer.h`)
+  - **models/**: Model management (`model.cpp`, `model.h`)
+  - **utils/**: Utilities (`utils.h`)
+  - `main.cpp`: Application entry point
+- **include/**: Public headers
+- **tests/**: Unit tests (`test_main.cpp`)
+- **CMakeLists.txt**: Build configuration
 
-- **include/**: Contains public headers for the framework.
-  - `tensor.h`: Public interface for the Tensor class.
-  - `layer.h`: Public interface for the Layer class.
-  - `model.h`: Public interface for the Model class.
-  - `utils.h`: Public interface for utility functions.
+---
 
-- **tests/**: Contains unit tests for the framework.
-  - `test_main.cpp`: Unit tests for core functionalities.
+## Key Features
 
-- **CMakeLists.txt**: Configuration file for building the project with CMake.
+### 1. **Polymorphic Neuron Types**
+- **Supported neurons:**
+  - `LinearNeuron`: Standard fully connected neuron
+  - `QuadraticNeuron`: Quadratic form neuron
+  - `SirenNeuron`: SIREN (sinusoidal representation networks)
+  - `RBFNeuron`: Radial basis function neuron
+  - `RationalNeuron`: Rational activation neuron
+  - `ComplexNeuron`: Complex-valued neuron
+- **Extensible:** Add your own neuron types by inheriting from the `Neuron` base class.
 
-## Recent Developments and Features
-
-### Hybrid Activation Function Design
-- The `Layer` class now supports a hybrid activation function approach:
-  - You can specify a **single activation function** for all neurons in a layer (e.g., ReLU, sigmoid, etc.).
-  - Alternatively, you can provide a **vector of activation functions**, one for each neuron, allowing for maximum flexibility and research use cases.
-- This design makes the framework both scalable (for standard deep learning) and highly customizable (for advanced architectures).
-
-### Improved Layer and Neuron APIs
-- The `Layer` constructor now requires the number of neurons, the input size, and either a single activation function or a vector of activation functions.
-- Each `Neuron` can be configured with custom weights and bias, and computes its output as a weighted sum plus bias.
-
-### Expanded Test Coverage
-- The test suite now includes:
-  - **Tensor**: Addition and multiplication operations.
-  - **Neuron**: Output calculation with ground truth validation.
-  - **Layer**: Both single and per-neuron activation function scenarios are tested.
-  - **Model**: Basic training interface is tested for integration.
-- All tests pass, ensuring the correctness of the core components and the new hybrid activation design.
-
-## Activation Function Design: Per-Neuron vs. Per-Layer
-
-This framework supports a **hybrid approach** to activation functions, giving you both flexibility and modularity:
-
-- **Per-neuron activation:**
-  - Each neuron in a dense layer can have its own activation function.
-  - Useful for research and experimentation with heterogeneous layers.
-  - Example: `DenseLayer(3, 4, std::vector<std::function<float(float)>>{activations::ReLU, activations::Sigmoid, activations::Tanh})`
-
-- **Per-layer activation (ActivationLayer):**
-  - All neurons in a layer use the same activation function, applied as a separate layer.
-  - Matches the design of most modern frameworks (PyTorch, TensorFlow, Keras).
-  - More modular and efficient for standard use cases.
-  - Example: `model.addLayer(new DenseLayer(...)); model.addLayer(new ActivationLayer(activations::ReLU));`
-
-### Summary Table
-
-| Approach                | Per-neuron flexibility | Standard/Modular | Performance |
-|-------------------------|-----------------------|------------------|-------------|
-| Neuron-level activation | Yes                   | No               | Lower       |
-| Activation layer        | No (per layer only)   | Yes              | Higher      |
-| Hybrid (this framework) | Yes                   | Yes              | Medium      |
-
-### Recommendation
-- For most users and production models, use per-layer activation (ActivationLayer) for clarity and performance.
-- For research or custom architectures, use per-neuron activation in DenseLayer.
-- You can mix and match both approaches as needed in your model definitions.
-
-## Backend Abstraction and GPU Support
-
-The framework now supports a backend abstraction for tensors and operations, enabling both CPU and (future) GPU (CUDA) execution.
-
-- **Backend selection:**
-  - The `Tensor` class and core operations can use either the CPU or CUDA backend.
-  - The backend is specified at tensor construction and can be queried or changed at runtime.
-
-- **Conditional CUDA compilation:**
-  - CUDA-specific code is only compiled and used if the `USE_CUDA` flag is defined during build.
-  - On Mac, only the CPU backend is available; on Linux with NVIDIA hardware, CUDA can be enabled.
-
-- **How to build with CUDA:**
-  - By default, the framework builds for CPU only.
-  - To enable CUDA, define `USE_CUDA` during compilation (e.g., with CMake: `-DUSE_CUDA=ON`).
-  - CUDA code is only compiled and used if the backend is set to CUDA and `USE_CUDA` is defined.
-
-- **Example: Creating a Tensor with a Specific Backend**
+### 2. **Heterogeneous Layers**
+- **Mix neuron types:**  
+  Layers can contain any combination of neuron types, enabling research into heterogeneous architectures.
+- **Example:**
   ```cpp
-  Tensor cpu_tensor({2, 2}); // Defaults to CPU
-  Tensor gpu_tensor({2, 2}, Backend::CUDA); // For CUDA (if enabled)
+  std::vector<std::unique_ptr<Neuron>> neurons;
+  neurons.push_back(std::make_unique<LinearNeuron>(...));
+  neurons.push_back(std::make_unique<QuadraticNeuron>(...));
+  // ...add more neuron types
+  DenseLayer layer(std::move(neurons));
   ```
 
-- **Extensibility:**
-  - The backend abstraction allows for easy addition of OpenCL or Metal support in the future for Mac GPU acceleration.
+### 3. **Hybrid Activation System**
+- **Per-layer or per-neuron:**  
+  - Assign a single activation function to a whole layer, or
+  - Assign different activation functions to each neuron.
+- **Example:**
+  ```cpp
+  // Per-layer
+  DenseLayer layer(3, 4, activations::ReLU);
+  // Per-neuron
+  DenseLayer layer(3, 4, {activations::ReLU, activations::Sigmoid, activations::Tanh, activations::Identity});
+  ```
+
+### 4. **Backend Abstraction (CPU/GPU)**
+- **Tensor operations** can run on CPU or CUDA (if enabled).
+- **Extensible** for future OpenCL/Metal support.
+- **Example:**
+  ```cpp
+  Tensor cpu_tensor({2, 2}); // CPU
+  Tensor gpu_tensor({2, 2}, Backend::CUDA); // CUDA (if enabled)
+  ```
+
+### 5. **Comprehensive Testing**
+- **All neuron types** and **heterogeneous layers** are tested against hand-calculated ground truth values.
+- **Test suite** covers tensor ops, neuron outputs, layer outputs, activations, and more.
+- **How to run:**
+  ```
+  cd build
+  ctest --output-on-failure
+  ```
+
+---
+
+## Example: Heterogeneous Layer Construction
+
+```cpp
+using namespace activations;
+std::vector<std::unique_ptr<Neuron>> neurons;
+neurons.push_back(std::make_unique<LinearNeuron>(2, ReLU));
+neurons.push_back(std::make_unique<QuadraticNeuron>(2, Identity));
+neurons.push_back(std::make_unique<SirenNeuron>(2, 1.0f));
+neurons.push_back(std::make_unique<RBFNeuron>(2, 1.0f));
+neurons.push_back(std::make_unique<RationalNeuron>(1.0f, 1.0f));
+neurons.push_back(std::make_unique<ComplexNeuron>(2, 0.0f, Identity));
+DenseLayer layer(std::move(neurons));
+Tensor input({2}); input({0}) = 2.0f; input({1}) = 3.0f;
+float output = layer.neurons[0]->forward(input); // Forward for first neuron
+```
+
+---
 
 ## Getting Started
 
 ### Prerequisites
-
 - C++11 or later
 - CMake
 
-### Building the Project
+### Build Instructions
+```sh
+git clone <repository-url>
+cd deep-learning-app
+mkdir build && cd build
+cmake ..
+make
+```
 
-1. Clone the repository:
-   ```
-   git clone <repository-url>
-   cd deep-learning-app
-   ```
+### Running Tests
+```sh
+ctest --output-on-failure
+```
 
-2. Create a build directory and navigate into it:
-   ```
-   mkdir build
-   cd build
-   ```
+---
 
-3. Run CMake to configure the project:
-   ```
-   cmake ..
-   ```
+## Design Highlights
 
-4. Build the project:
-   ```
-   make
-   ```
+- **Polymorphic neurons:** Add new neuron types easily.
+- **Heterogeneous layers:** Mix any neuron types in a layer.
+- **Hybrid activations:** Per-layer or per-neuron flexibility.
+- **Backend abstraction:** CPU and CUDA support, extensible to other backends.
+- **Comprehensive tests:** All core features validated against ground truth.
 
-### Usage
+---
 
-After building the project, you can run the application by executing the generated binary. You can modify `main.cpp` to set up your model and start training or inference.
+## Roadmap / Next Steps
 
-### Contributing
+- **Backpropagation:** Implement and test gradient computation for all neuron types.
+- **Serialization:** Save/load models with all neuron and layer types.
+- **More backends:** OpenCL/Metal for Mac GPU support.
+- **Advanced layers:** RNNs, CNNs, attention, etc.
 
-Contributions are welcome! Please feel free to submit a pull request or open an issue for any suggestions or improvements.
+---
 
-### License
+## License
 
-This project is licensed under the MIT License. See the LICENSE file for more details.
+MIT License. See LICENSE file for details.
+
+---
+
+**Contributions and feedback are welcome!**

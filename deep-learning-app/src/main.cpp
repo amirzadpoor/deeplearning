@@ -12,7 +12,7 @@ int main() {
     input({2}) = 3.0f;
 
     // Create neuron with 3 inputs
-    Neuron neuron(3);
+    LinearNeuron neuron(3);
     neuron.setWeights({0.5f, -1.0f, 2.0f});
     neuron.setBias(0.1f);
 
