@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/src/core/loss.cpp" "CMakeFiles/DeepLearningAppTests.dir/src/core/loss.cpp.o" "gcc" "CMakeFiles/DeepLearningAppTests.dir/src/core/loss.cpp.o.d"
   "/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/src/core/neuron.cpp" "CMakeFiles/DeepLearningAppTests.dir/src/core/neuron.cpp.o" "gcc" "CMakeFiles/DeepLearningAppTests.dir/src/core/neuron.cpp.o.d"
   "/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/src/core/tensor.cpp" "CMakeFiles/DeepLearningAppTests.dir/src/core/tensor.cpp.o" "gcc" "CMakeFiles/DeepLearningAppTests.dir/src/core/tensor.cpp.o.d"
   "/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/src/layers/layer.cpp" "CMakeFiles/DeepLearningAppTests.dir/src/layers/layer.cpp.o" "gcc" "CMakeFiles/DeepLearningAppTests.dir/src/layers/layer.cpp.o.d"

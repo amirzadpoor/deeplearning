@@ -152,6 +152,33 @@ DeepLearningAppTests/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DeepLearningAppTests.dir/build.make CMakeFiles/DeepLearningAppTests.dir/build
 .PHONY : DeepLearningAppTests/fast
 
+src/core/loss.o: src/core/loss.cpp.o
+.PHONY : src/core/loss.o
+
+# target to build an object file
+src/core/loss.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/deep_learning_app.dir/build.make CMakeFiles/deep_learning_app.dir/src/core/loss.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DeepLearningAppTests.dir/build.make CMakeFiles/DeepLearningAppTests.dir/src/core/loss.cpp.o
+.PHONY : src/core/loss.cpp.o
+
+src/core/loss.i: src/core/loss.cpp.i
+.PHONY : src/core/loss.i
+
+# target to preprocess a source file
+src/core/loss.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/deep_learning_app.dir/build.make CMakeFiles/deep_learning_app.dir/src/core/loss.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DeepLearningAppTests.dir/build.make CMakeFiles/DeepLearningAppTests.dir/src/core/loss.cpp.i
+.PHONY : src/core/loss.cpp.i
+
+src/core/loss.s: src/core/loss.cpp.s
+.PHONY : src/core/loss.s
+
+# target to generate assembly for a file
+src/core/loss.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/deep_learning_app.dir/build.make CMakeFiles/deep_learning_app.dir/src/core/loss.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DeepLearningAppTests.dir/build.make CMakeFiles/DeepLearningAppTests.dir/src/core/loss.cpp.s
+.PHONY : src/core/loss.cpp.s
+
 src/core/neuron.o: src/core/neuron.cpp.o
 .PHONY : src/core/neuron.o
 
@@ -319,6 +346,9 @@ help:
 	@echo "... test"
 	@echo "... DeepLearningAppTests"
 	@echo "... deep_learning_app"
+	@echo "... src/core/loss.o"
+	@echo "... src/core/loss.i"
+	@echo "... src/core/loss.s"
 	@echo "... src/core/neuron.o"
 	@echo "... src/core/neuron.i"
 	@echo "... src/core/neuron.s"

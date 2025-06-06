@@ -12,6 +12,7 @@ file(GLOB SOURCES
     src/layers/layer.cpp
     src/models/model.cpp
     src/main.cpp
+    src/core/loss.cpp
 )
 
 add_executable(deep_learning_app ${SOURCES})
@@ -28,6 +29,7 @@ add_executable(DeepLearningAppTests ${TEST_SOURCES}
     src/core/neuron.cpp
     src/layers/layer.cpp
     src/models/model.cpp
+    src/core/loss.cpp
 )
 
 target_link_libraries(DeepLearningAppTests ${GTEST_LIBRARIES} pthread)

@@ -29,6 +29,7 @@ public:
     void fill(float value);
     float get(int i, int j) const;
     std::vector<int> shape() const;
+    const std::vector<float>& getData() const { return data; }
 
     // Backend support
     Backend getBackend() const { return backend; }

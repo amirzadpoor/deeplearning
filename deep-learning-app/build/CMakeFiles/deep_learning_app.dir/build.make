@@ -69,10 +69,24 @@ include CMakeFiles/deep_learning_app.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/deep_learning_app.dir/flags.make
 
+CMakeFiles/deep_learning_app.dir/src/core/loss.cpp.o: CMakeFiles/deep_learning_app.dir/flags.make
+CMakeFiles/deep_learning_app.dir/src/core/loss.cpp.o: /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/src/core/loss.cpp
+CMakeFiles/deep_learning_app.dir/src/core/loss.cpp.o: CMakeFiles/deep_learning_app.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/deep_learning_app.dir/src/core/loss.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/deep_learning_app.dir/src/core/loss.cpp.o -MF CMakeFiles/deep_learning_app.dir/src/core/loss.cpp.o.d -o CMakeFiles/deep_learning_app.dir/src/core/loss.cpp.o -c /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/src/core/loss.cpp
+
+CMakeFiles/deep_learning_app.dir/src/core/loss.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/deep_learning_app.dir/src/core/loss.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/src/core/loss.cpp > CMakeFiles/deep_learning_app.dir/src/core/loss.cpp.i
+
+CMakeFiles/deep_learning_app.dir/src/core/loss.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/deep_learning_app.dir/src/core/loss.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/src/core/loss.cpp -o CMakeFiles/deep_learning_app.dir/src/core/loss.cpp.s
+
 CMakeFiles/deep_learning_app.dir/src/core/neuron.cpp.o: CMakeFiles/deep_learning_app.dir/flags.make
 CMakeFiles/deep_learning_app.dir/src/core/neuron.cpp.o: /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/src/core/neuron.cpp
 CMakeFiles/deep_learning_app.dir/src/core/neuron.cpp.o: CMakeFiles/deep_learning_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/deep_learning_app.dir/src/core/neuron.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/deep_learning_app.dir/src/core/neuron.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/deep_learning_app.dir/src/core/neuron.cpp.o -MF CMakeFiles/deep_learning_app.dir/src/core/neuron.cpp.o.d -o CMakeFiles/deep_learning_app.dir/src/core/neuron.cpp.o -c /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/src/core/neuron.cpp
 
 CMakeFiles/deep_learning_app.dir/src/core/neuron.cpp.i: cmake_force
@@ -86,7 +100,7 @@ CMakeFiles/deep_learning_app.dir/src/core/neuron.cpp.s: cmake_force
 CMakeFiles/deep_learning_app.dir/src/core/tensor.cpp.o: CMakeFiles/deep_learning_app.dir/flags.make
 CMakeFiles/deep_learning_app.dir/src/core/tensor.cpp.o: /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/src/core/tensor.cpp
 CMakeFiles/deep_learning_app.dir/src/core/tensor.cpp.o: CMakeFiles/deep_learning_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/deep_learning_app.dir/src/core/tensor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/deep_learning_app.dir/src/core/tensor.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/deep_learning_app.dir/src/core/tensor.cpp.o -MF CMakeFiles/deep_learning_app.dir/src/core/tensor.cpp.o.d -o CMakeFiles/deep_learning_app.dir/src/core/tensor.cpp.o -c /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/src/core/tensor.cpp
 
 CMakeFiles/deep_learning_app.dir/src/core/tensor.cpp.i: cmake_force
@@ -100,7 +114,7 @@ CMakeFiles/deep_learning_app.dir/src/core/tensor.cpp.s: cmake_force
 CMakeFiles/deep_learning_app.dir/src/layers/layer.cpp.o: CMakeFiles/deep_learning_app.dir/flags.make
 CMakeFiles/deep_learning_app.dir/src/layers/layer.cpp.o: /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/src/layers/layer.cpp
 CMakeFiles/deep_learning_app.dir/src/layers/layer.cpp.o: CMakeFiles/deep_learning_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/deep_learning_app.dir/src/layers/layer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/deep_learning_app.dir/src/layers/layer.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/deep_learning_app.dir/src/layers/layer.cpp.o -MF CMakeFiles/deep_learning_app.dir/src/layers/layer.cpp.o.d -o CMakeFiles/deep_learning_app.dir/src/layers/layer.cpp.o -c /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/src/layers/layer.cpp
 
 CMakeFiles/deep_learning_app.dir/src/layers/layer.cpp.i: cmake_force
@@ -114,7 +128,7 @@ CMakeFiles/deep_learning_app.dir/src/layers/layer.cpp.s: cmake_force
 CMakeFiles/deep_learning_app.dir/src/main.cpp.o: CMakeFiles/deep_learning_app.dir/flags.make
 CMakeFiles/deep_learning_app.dir/src/main.cpp.o: /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/src/main.cpp
 CMakeFiles/deep_learning_app.dir/src/main.cpp.o: CMakeFiles/deep_learning_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/deep_learning_app.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/deep_learning_app.dir/src/main.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/deep_learning_app.dir/src/main.cpp.o -MF CMakeFiles/deep_learning_app.dir/src/main.cpp.o.d -o CMakeFiles/deep_learning_app.dir/src/main.cpp.o -c /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/src/main.cpp
 
 CMakeFiles/deep_learning_app.dir/src/main.cpp.i: cmake_force
@@ -128,7 +142,7 @@ CMakeFiles/deep_learning_app.dir/src/main.cpp.s: cmake_force
 CMakeFiles/deep_learning_app.dir/src/models/model.cpp.o: CMakeFiles/deep_learning_app.dir/flags.make
 CMakeFiles/deep_learning_app.dir/src/models/model.cpp.o: /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/src/models/model.cpp
 CMakeFiles/deep_learning_app.dir/src/models/model.cpp.o: CMakeFiles/deep_learning_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/deep_learning_app.dir/src/models/model.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/deep_learning_app.dir/src/models/model.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/deep_learning_app.dir/src/models/model.cpp.o -MF CMakeFiles/deep_learning_app.dir/src/models/model.cpp.o.d -o CMakeFiles/deep_learning_app.dir/src/models/model.cpp.o -c /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/src/models/model.cpp
 
 CMakeFiles/deep_learning_app.dir/src/models/model.cpp.i: cmake_force
@@ -141,6 +155,7 @@ CMakeFiles/deep_learning_app.dir/src/models/model.cpp.s: cmake_force
 
 # Object files for target deep_learning_app
 deep_learning_app_OBJECTS = \
+"CMakeFiles/deep_learning_app.dir/src/core/loss.cpp.o" \
 "CMakeFiles/deep_learning_app.dir/src/core/neuron.cpp.o" \
 "CMakeFiles/deep_learning_app.dir/src/core/tensor.cpp.o" \
 "CMakeFiles/deep_learning_app.dir/src/layers/layer.cpp.o" \
@@ -150,6 +165,7 @@ deep_learning_app_OBJECTS = \
 # External object files for target deep_learning_app
 deep_learning_app_EXTERNAL_OBJECTS =
 
+deep_learning_app: CMakeFiles/deep_learning_app.dir/src/core/loss.cpp.o
 deep_learning_app: CMakeFiles/deep_learning_app.dir/src/core/neuron.cpp.o
 deep_learning_app: CMakeFiles/deep_learning_app.dir/src/core/tensor.cpp.o
 deep_learning_app: CMakeFiles/deep_learning_app.dir/src/layers/layer.cpp.o
@@ -157,7 +173,7 @@ deep_learning_app: CMakeFiles/deep_learning_app.dir/src/main.cpp.o
 deep_learning_app: CMakeFiles/deep_learning_app.dir/src/models/model.cpp.o
 deep_learning_app: CMakeFiles/deep_learning_app.dir/build.make
 deep_learning_app: CMakeFiles/deep_learning_app.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable deep_learning_app"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable deep_learning_app"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/deep_learning_app.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

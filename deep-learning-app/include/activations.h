@@ -4,6 +4,31 @@
 #include <vector>
 
 namespace activations {
+    struct Activation {
+        std::function<float(float)> fn;
+        std::function<float(float)> dfn;
+        Activation(std::function<float(float)> f, std::function<float(float)> df) : fn(f), dfn(df) {}
+        float operator()(float x) const { return fn(x); }
+        float derivative(float x) const { return dfn(x); }
+    };
+
+    static const Activation Identity = Activation(
+        [](float x) { return x; },
+        [](float) { return 1.0f; }
+    );
+    static const Activation ReLU = Activation(
+        [](float x) { return x > 0 ? x : 0; },
+        [](float x) { return x > 0 ? 1.0f : 0.0f; }
+    );
+    static const Activation Sigmoid = Activation(
+        [](float x) { return 1.0f / (1.0f + std::exp(-x)); },
+        [](float x) { float s = 1.0f / (1.0f + std::exp(-x)); return s * (1.0f - s); }
+    );
+    static const Activation Tanh = Activation(
+        [](float x) { return std::tanh(x); },
+        [](float x) { float t = std::tanh(x); return 1.0f - t * t; }
+    );
+
     // Basic activations
     inline float relu(float x) { return x > 0 ? x : 0; }
     inline float sigmoid(float x) { return 1.0f / (1.0f + std::exp(-x)); }
@@ -51,10 +76,4 @@ namespace activations {
         return exp_x;
     }
     // No std::function wrapper for softmax since it operates on vectors
-
-    // Convenience wrappers for previously implemented activations
-    static const std::function<float(float)> ReLU = relu;
-    static const std::function<float(float)> Sigmoid = sigmoid;
-    static const std::function<float(float)> Identity = identity;
-    static const std::function<float(float)> Tanh = tanh;
 } 

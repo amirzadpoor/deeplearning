@@ -5,8 +5,8 @@
 static float identity(float x) { return x; }
 
 // LinearNeuron implementation
-LinearNeuron::LinearNeuron(int input_size, std::function<float(float)> activation)
-    : weights(input_size, 0.0f), bias(0.0f), activation(activation ? activation : identity) {}
+LinearNeuron::LinearNeuron(int input_size, activations::Activation activation)
+    : weights(input_size, 0.0f), bias(0.0f), grad_weights(input_size, 0.0f), grad_bias(0.0f), activation(activation) {}
 
 float LinearNeuron::forward(const Tensor& input) {
     auto dims = input.getDimensions();
@@ -23,30 +23,42 @@ float LinearNeuron::forward(const Tensor& input) {
 void LinearNeuron::setWeights(const std::vector<float>& w) {
     if (w.size() != weights.size()) throw std::invalid_argument("Weights size mismatch.");
     weights = w;
+    grad_weights.assign(weights.size(), 0.0f);
 }
 
 void LinearNeuron::setBias(float b) {
     bias = b;
+    grad_bias = 0.0f;
 }
 
-void LinearNeuron::update(float lr) {
+void LinearNeuron::update(float lr, float grad_clip_min, float grad_clip_max) {
     for (int i = 0; i < weights.size(); ++i) {
+        if (grad_weights[i] > grad_clip_max) grad_weights[i] = grad_clip_max;
+        if (grad_weights[i] < grad_clip_min) grad_weights[i] = grad_clip_min;
         weights[i] -= lr * grad_weights[i];
         grad_weights[i] = 0.0f;
     }
+    if (grad_bias > grad_clip_max) grad_bias = grad_clip_max;
+    if (grad_bias < grad_clip_min) grad_bias = grad_clip_min;
     bias -= lr * grad_bias;
     grad_bias = 0.0f;
 }
 
 Tensor LinearNeuron::backward(const Tensor& input, float grad_output) {
-    // dy/dx = weights, dL/dx = dL/dy * dy/dx
+    // dy/dx = activation'(z) * weights, dL/dx = dL/dy * dy/dx
+    float z = 0.0f;
+    for (int i = 0; i < weights.size(); ++i) {
+        z += weights[i] * input({i});
+    }
+    z += bias;
+    float dact = activation.derivative(z);
     Tensor grad_input({static_cast<int>(weights.size())}, input.getBackend());
     if (grad_weights.size() != weights.size()) grad_weights.resize(weights.size(), 0.0f);
     for (int i = 0; i < weights.size(); ++i) {
-        grad_input({i}) = grad_output * weights[i];
-        grad_weights[i] += grad_output * input({i});
+        grad_input({i}) = grad_output * dact * weights[i];
+        grad_weights[i] += grad_output * dact * input({i});
     }
-    grad_bias += grad_output;
+    grad_bias += grad_output * dact;
     return grad_input;
 }
 
@@ -55,8 +67,8 @@ int LinearNeuron::getInputSize() const {
 }
 
 // QuadraticNeuron implementation
-QuadraticNeuron::QuadraticNeuron(int input_size, std::function<float(float)> activation)
-    : Q(input_size, std::vector<float>(input_size, 0.0f)), weights(input_size, 0.0f), bias(0.0f), activation(activation ? activation : identity) {}
+QuadraticNeuron::QuadraticNeuron(int input_size, activations::Activation activation)
+    : Q(input_size, std::vector<float>(input_size, 0.0f)), weights(input_size, 0.0f), bias(0.0f), activation(activation) {}
 
 float QuadraticNeuron::forward(const Tensor& input) {
     auto dims = input.getDimensions();
@@ -92,11 +104,15 @@ void QuadraticNeuron::setBias(float b) {
     bias = b;
 }
 
-void QuadraticNeuron::update(float lr) {
+void QuadraticNeuron::update(float lr, float grad_clip_min, float grad_clip_max) {
     for (int i = 0; i < weights.size(); ++i) {
+        if (grad_weights[i] > grad_clip_max) grad_weights[i] = grad_clip_max;
+        if (grad_weights[i] < grad_clip_min) grad_weights[i] = grad_clip_min;
         weights[i] -= lr * grad_weights[i];
         grad_weights[i] = 0.0f;
     }
+    if (grad_bias > grad_clip_max) grad_bias = grad_clip_max;
+    if (grad_bias < grad_clip_min) grad_bias = grad_clip_min;
     bias -= lr * grad_bias;
     grad_bias = 0.0f;
 }
@@ -147,11 +163,15 @@ void SirenNeuron::setBias(float b) { bias = b; }
 
 void SirenNeuron::setOmega(float o) { omega = o; }
 
-void SirenNeuron::update(float lr) {
+void SirenNeuron::update(float lr, float grad_clip_min, float grad_clip_max) {
     for (int i = 0; i < weights.size(); ++i) {
+        if (grad_weights[i] > grad_clip_max) grad_weights[i] = grad_clip_max;
+        if (grad_weights[i] < grad_clip_min) grad_weights[i] = grad_clip_min;
         weights[i] -= lr * grad_weights[i];
         grad_weights[i] = 0.0f;
     }
+    if (grad_bias > grad_clip_max) grad_bias = grad_clip_max;
+    if (grad_bias < grad_clip_min) grad_bias = grad_clip_min;
     bias -= lr * grad_bias;
     grad_bias = 0.0f;
 }
@@ -200,12 +220,16 @@ void RBFNeuron::setCenter(const std::vector<float>& c) {
 
 void RBFNeuron::setBeta(float b) { beta = b; }
 
-void RBFNeuron::update(float lr) {
+void RBFNeuron::update(float lr, float grad_clip_min, float grad_clip_max) {
     if (grad_center.size() != center.size()) grad_center.resize(center.size(), 0.0f);
     for (int i = 0; i < center.size(); ++i) {
+        if (grad_center[i] > grad_clip_max) grad_center[i] = grad_clip_max;
+        if (grad_center[i] < grad_clip_min) grad_center[i] = grad_clip_min;
         center[i] -= lr * grad_center[i];
         grad_center[i] = 0.0f;
     }
+    if (grad_beta > grad_clip_max) grad_beta = grad_clip_max;
+    if (grad_beta < grad_clip_min) grad_beta = grad_clip_min;
     beta -= lr * grad_beta;
     grad_beta = 0.0f;
 }
@@ -249,7 +273,11 @@ void RationalNeuron::setA(float a_) { a = a_; }
 
 void RationalNeuron::setB(float b_) { b = b_; }
 
-void RationalNeuron::update(float lr) {
+void RationalNeuron::update(float lr, float grad_clip_min, float grad_clip_max) {
+    if (grad_a > grad_clip_max) grad_a = grad_clip_max;
+    if (grad_a < grad_clip_min) grad_a = grad_clip_min;
+    if (grad_b > grad_clip_max) grad_b = grad_clip_max;
+    if (grad_b < grad_clip_min) grad_b = grad_clip_min;
     a -= lr * grad_a;
     b -= lr * grad_b;
     grad_a = 0.0f;
@@ -274,9 +302,9 @@ int RationalNeuron::getInputSize() const {
     return 1;
 }
 
-// Complex neuron: y = f(w^T x) * exp(j * theta), returns magnitude for now
-ComplexNeuron::ComplexNeuron(int input_size, float theta, std::function<float(float)> activation)
-    : weights(input_size, 0.0f), theta(theta), activation(activation ? activation : identity) {}
+// Complex neuron: y = f(w^T x + b) * exp(j * theta), returns magnitude for now
+ComplexNeuron::ComplexNeuron(int input_size, float theta, activations::Activation activation)
+    : weights(input_size, 0.0f), theta(theta), activation(activation), bias(0.0f), grad_bias(0.0f) {}
 
 float ComplexNeuron::forward(const Tensor& input) {
     auto dims = input.getDimensions();
@@ -287,7 +315,7 @@ float ComplexNeuron::forward(const Tensor& input) {
     for (int i = 0; i < weights.size(); ++i) {
         sum += weights[i] * input({i});
     }
-    float mag = activation(sum);
+    float mag = activation(sum + bias);
     // Return magnitude only; phase is theta
     return mag; // Optionally: return std::polar(mag, theta) for complex support
 }
@@ -299,27 +327,37 @@ void ComplexNeuron::setWeights(const std::vector<float>& w) {
 
 void ComplexNeuron::setTheta(float t) { theta = t; }
 
-void ComplexNeuron::update(float lr) {
+void ComplexNeuron::setBias(float b) { bias = b; }
+
+void ComplexNeuron::update(float lr, float grad_clip_min, float grad_clip_max) {
     for (int i = 0; i < weights.size(); ++i) {
+        if (grad_weights[i] > grad_clip_max) grad_weights[i] = grad_clip_max;
+        if (grad_weights[i] < grad_clip_min) grad_weights[i] = grad_clip_min;
         weights[i] -= lr * grad_weights[i];
         grad_weights[i] = 0.0f;
     }
+    if (grad_bias > grad_clip_max) grad_bias = grad_clip_max;
+    if (grad_bias < grad_clip_min) grad_bias = grad_clip_min;
+    if (grad_theta > grad_clip_max) grad_theta = grad_clip_max;
+    if (grad_theta < grad_clip_min) grad_theta = grad_clip_min;
+    bias -= lr * grad_bias;
     theta -= lr * grad_theta;
+    grad_bias = 0.0f;
     grad_theta = 0.0f;
 }
 
 Tensor ComplexNeuron::backward(const Tensor& input, float grad_output) {
-    // y = activation(w^T x) * exp(j*theta), return grad for magnitude only
-    // dy/dx_i = activation'(w^T x) * w_i (for Identity activation, derivative is 1)
     float sum = 0.0f;
     for (int i = 0; i < weights.size(); ++i) sum += weights[i] * input({i});
-    float dact = 1.0f; // Only correct for Identity activation
+    float z = sum + bias;
+    float dact = activation.derivative(z);
     Tensor grad_input({static_cast<int>(weights.size())}, input.getBackend());
     if (grad_weights.size() != weights.size()) grad_weights.resize(weights.size(), 0.0f);
     for (int i = 0; i < weights.size(); ++i) {
         grad_input({i}) = grad_output * dact * weights[i];
-        grad_weights[i] += grad_output * dact * weights[i];
+        grad_weights[i] += grad_output * dact * input({i});
     }
+    grad_bias += grad_output * dact;
     return grad_input;
 }
 

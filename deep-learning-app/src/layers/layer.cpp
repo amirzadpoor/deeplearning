@@ -7,14 +7,14 @@
 DenseLayer::DenseLayer(std::vector<std::unique_ptr<Neuron>> neurons)
     : neurons(std::move(neurons)) {}
 
-DenseLayer::DenseLayer(int num_neurons, int input_size, std::function<float(float)> activation) {
+DenseLayer::DenseLayer(int num_neurons, int input_size, activations::Activation activation) {
     neurons.reserve(num_neurons);
     for (int i = 0; i < num_neurons; ++i) {
         neurons.push_back(std::make_unique<LinearNeuron>(input_size, activation));
     }
 }
 
-DenseLayer::DenseLayer(int num_neurons, int input_size, const std::vector<std::function<float(float)>>& activations) {
+DenseLayer::DenseLayer(int num_neurons, int input_size, const std::vector<activations::Activation>& activations) {
     if (activations.size() != num_neurons) throw std::invalid_argument("activations size must match num_neurons");
     neurons.reserve(num_neurons);
     for (int i = 0; i < num_neurons; ++i) {
@@ -57,9 +57,9 @@ Tensor DenseLayer::forward(const Tensor& input) {
     }
 }
 
-void DenseLayer::update(float lr) {
+void DenseLayer::update(float lr, float grad_clip_min, float grad_clip_max) {
     for (auto& neuron : neurons) {
-        neuron->update(lr);
+        neuron->update(lr, grad_clip_min, grad_clip_max);
     }
 }
 

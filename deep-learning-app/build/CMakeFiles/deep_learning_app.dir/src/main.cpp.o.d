@@ -786,4 +786,5 @@ CMakeFiles/deep_learning_app.dir/src/main.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include/unistd.h \
   /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/tensor.h \
   /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/backend.h \
-  /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/neuron.h
+  /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/neuron.h \
+  /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/activations.h

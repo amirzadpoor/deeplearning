@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/DeepLearningAppTests.dir/src/core/loss.cpp.o"
+  "CMakeFiles/DeepLearningAppTests.dir/src/core/loss.cpp.o.d"
   "CMakeFiles/DeepLearningAppTests.dir/src/core/neuron.cpp.o"
   "CMakeFiles/DeepLearningAppTests.dir/src/core/neuron.cpp.o.d"
   "CMakeFiles/DeepLearningAppTests.dir/src/core/tensor.cpp.o"

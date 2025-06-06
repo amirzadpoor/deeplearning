@@ -783,4 +783,5 @@ CMakeFiles/DeepLearningAppTests.dir/src/models/model.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include/c++/v1/__functional/default_searcher.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include/c++/v1/__functional/not_fn.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include/c++/v1/__functional/perfect_forward.h \
-  /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/activations.h
+  /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/activations.h \
+  /Users/azadpoor/Desktop/Codes/deeplearning/deep-learning-app/include/loss.h
